@@ -162,7 +162,7 @@ jobs:
         run: |
           set -euo pipefail
 
-          if [[ "$RELEASE_TAG" == *"-rc"* ]]; then
+          if [[ "${RELEASE_TAG,,}" == *"-rc"* ]]; then  # ,, = lowercase, so -RC and -rc both count
             gh release edit "$RELEASE_TAG" \
               --prerelease \
               --latest=false
